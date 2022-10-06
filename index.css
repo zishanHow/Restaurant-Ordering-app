@@ -145,6 +145,7 @@ section {
 /* == Order section == */
 
 .order-section {
+    /* display: none; */
     background-color: white;
     width: 508px;
     margin: 0 auto;
@@ -186,12 +187,26 @@ section {
     font-weight: 700;
 }
 
+/* buing mgs */
+.buing-mgs {
+    display: none;
+    text-align: center;
+    width: 508px;
+    margin: 0 auto;
+    padding: 35px 0;
+    
+    background: #ECFDF5;
+    border-radius: 3px;
+    color: #065F46;
+    font-size: 32px;
+    line-height: 17px;
+}
 
 
 /* == Modal styles == */
 
 .modal{
-    /* display: none; */
+    display: none;
     position: fixed;
     right: 0;
     left: 0;

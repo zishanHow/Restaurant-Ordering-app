@@ -1,5 +1,10 @@
 import { menuArray } from "./data.js"
 
+const orderBtn = document.getElementById("order-btn")
+const modal = document.getElementById("modal")
+const payBtn = document.getElementById("pay-btn")
+const buyingMgs = document.getElementById("buing-mgs")
+
 const main = document.getElementById("main")
 // console.log(main)
 
@@ -25,3 +30,12 @@ function getRestaurantHtml() {
 }
 
 getRestaurantHtml()
+
+orderBtn.addEventListener("click", function() {
+    modal.style.display = 'inline'
+})
+
+payBtn.addEventListener("click", function() {
+    modal.style.display = 'none'
+    buyingMgs.style.display = "block"
+})
