@@ -91,6 +91,17 @@ h3 {
     font-size: 20px;
     line-height: 33px;
 }
+
+/* modal typographi */
+.modal-header {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 31.12px;
+    color: #000000;
+    padding: 20px;
+}
+
 /* == Section == */
 
 section {
@@ -177,12 +188,44 @@ section {
 
 
 
+/* == Modal styles == */
 
+.modal{
+    /* display: none; */
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 90px;
+    bottom: 0;
+    width: 524px;
+    height: 450px;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+}
 
+input {
+    display: block;
+    width: 475.91px;
+    margin: 0 auto;
+    padding: 20px 0px;
+    margin-bottom: 23.22px;
 
+    border: 1.29664px solid #757575;
+    border-radius: 3.88991px;
+    color: #757575;
+}
 
+.pay-btn {
+    display: block;
+    width: 475.91px;
+    margin: 0 auto;
+    padding: 20px 0px;
+    background-color: #16DB99;
+    border: none;
+    margin-bottom: 20px;
 
-
-.only {
-    border-bottom: 1px solid black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #FFFFFF;
 }
