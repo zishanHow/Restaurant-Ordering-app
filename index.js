@@ -4,9 +4,36 @@ const orderBtn = document.getElementById("order-btn")
 const modal = document.getElementById("modal")
 const payBtn = document.getElementById("pay-btn")
 const buyingMgs = document.getElementById("buing-mgs")
-
 const main = document.getElementById("main")
-// console.log(main)
+
+
+
+
+
+
+
+document.addEventListener("click", function(e) {
+    if(e.target.dataset.add) {
+        handleAddClick(e.target.dataset.add)
+    }
+})
+
+function handleAddClick(addId) {
+    const order = document.getElementById("order")
+    order.style.display = "block"
+
+    const targerMenuObj = menuArray.filter(function(menu) {
+        return menu.id === addId
+    })
+
+    console.log(targerMenuObj)
+}
+
+
+
+
+
+
 
 function getRestaurantHtml() {
     let restaurantHtml = ""
@@ -22,7 +49,7 @@ function getRestaurantHtml() {
                 </div>
             </div>
 
-            <div class="add-icon"><i class="fa-solid fa-plus"></i></div>
+            <div class="add-icon"><i class="fa-solid fa-plus" data-add="${restaurant.id}"></i></div>
         </section>
         `
     })
@@ -30,6 +57,22 @@ function getRestaurantHtml() {
 }
 
 getRestaurantHtml()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 orderBtn.addEventListener("click", function() {
     modal.style.display = 'inline'
