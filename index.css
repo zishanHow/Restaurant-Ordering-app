@@ -145,9 +145,9 @@ section {
 }
 
 /* == Order section == */
-.order {
+/* .order {
     display: none;
-}
+} */
 
 .order-section {
     background-color: white;
@@ -159,8 +159,6 @@ section {
 .order-flex {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid black;
-    padding: 15px 0px;
 }
 
 .see-price {
@@ -174,6 +172,7 @@ section {
     display: flex;
     justify-content: space-between;
     padding: 2px 0px 20px 0px;
+    border-top: 1px solid black;
 }
 
 .order-btn {
