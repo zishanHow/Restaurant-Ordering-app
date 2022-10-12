@@ -1,43 +1,20 @@
-
 import { menuArray } from "./data.js"
-console.log(menuArray)
 
 const main = document.getElementById("main")
 
 document.addEventListener("click", function(e) {
-    if(e.target.dataset.plus) {
-        handleAddClick(e.target.dataset.plus)
+    if(e.target.dataset.add) {
+        addToOrder(e.target.dataset.add)
     }
 })
 
-/* function handleAddClick(meee) {
-    const targetMenuObj = menuArray.filter(function(menu){
-        return meee === menu.id
-    })[0]
-    console.log(targetMenuObj)
-} */
-
-
-
-function handleAddClick(plusId) {
-    console.log(plusId)
-    // remove the .hide from order
-    if(document.getElementById("order").classList.contains("hide")) {
-        document.getElementById("order").classList.remove("hide")
-    }
-    const menuObjArray = menuArray.filter(function(item){
-        return item.id === plusId
-    })[0]
-
-    console.log(menuObjArray)
-    let cartRows = document.getElementById("cart-rows").innerHTML += `
-                    <div class="order-flex">
-                        <p class="ordered-item">${menuObjArray.name} <span class="remove-item">(remove)</span></p>
-                        <p> <span class="see-price">$${menuObjArray.price}</span></p>
-                    </div>
-    `
-    return cartRows
+function addToOrder(addId) {
+    let targetItem = getItem(addId)
+    if(targetItem.orders === 0) {
+        document.getElementById(`remove-food-${id}`).disabled = false
+    }targetItem.orders++
 }
+
 
 function getRestaurantHtml() {
     let restaurantHtml = ""
@@ -55,73 +32,17 @@ function getRestaurantHtml() {
                 </div>
             </div>
 
-            <button id="remove-item-${restaurant.id}" class="add-icon" data-remove="${restaurant.id}" disabled><i class="fa-sharp fa-solid fa-minus"></i></button>
-            <button id="add-item-${restaurant.id}" class="add-icon" data-add="${restaurant.id}"><i class="fa-regular fa-plus"></i></button>
+            <button id="remove-food-${restaurant.id}" class="add-icon" disabled><i class="fa-sharp fa-solid fa-minus" data-remove="${restaurant.id}"></i></button>
+            <button id="add-food-${restaurant.id}" class="add-icon"><i class="fa-solid fa-plus" data-add="${restaurant.id}"></i></button>
         </section>
         `
-        i++
+    i++
     })
     return restaurantHtml
 }
-getRestaurantHtml()
+
 
 function render() {
     main.innerHTML = getRestaurantHtml()
 }
-
 render()
-
-
-
-
-
-/* 
-
-orderBtn.addEventListener("click", function() {
-    modal.style.display = 'inline'
-})
-
-payBtn.addEventListener("click", function() {
-    modal.style.display = 'none'
-    buyingMgs.style.display = "block"
-}) */
-
-
-
-
-
-
-
-/* const orderBtn = document.getElementById("order-btn")
-const modal = document.getElementById("modal")
-const payBtn = document.getElementById("pay-btn")
-const buyingMgs = document.getElementById("buing-mgs") */
-
-
-
-
-
-
-
-
-
-// let removeItem = document.getElementsByClassName("remove-item")
-
-// for (let i = 0; i < removeItem.length; i++) {
-//     let remove = removeItem[i]
-//     remove.addEventListener("click", removeCartItem)
-// }
-
-// function removeCartItem(e) {
-//     let removeClick = e.target
-//     removeClick.parentElement.parentElement.remove()
-// }
-
-
-// function updateTotalPrice() {
-//     let cardRows = document.getElementsByClassName("cart-rows")
-//     for (let i = 0; i < cardRows.length; i++) {
-//         let cartRow = cardRows[i]
-//         let priceElement = cartRow.getElementsByClassName("")
-//     }
-// }
