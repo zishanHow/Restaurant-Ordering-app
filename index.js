@@ -2,6 +2,10 @@ import { menuArray } from "./data.js"
 
 const main = document.getElementById("main")
 
+
+
+let order = initializeOrder()
+
 document.addEventListener("click", function(e) {
     if(e.target.dataset.add) {
         addToOrder(e.target.dataset.add)
@@ -16,6 +20,29 @@ function addToOrder(addId) {
 }
 
 
+//utility functions
+function initializeOrder() {
+    let newOrder = menuArray.map( item => (
+        {
+            name: item.name,
+            id: item.id,
+            price: item.price,
+            orders: 0
+        }
+    ))
+    console.log(newOrder)
+}
+
+
+
+
+
+
+
+
+
+
+// main section
 function getRestaurantHtml() {
     let restaurantHtml = ""
 
