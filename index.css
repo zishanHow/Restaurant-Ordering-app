@@ -149,6 +149,10 @@ section {
     display: none;
 } */
 
+.hide {
+    display: none !important;
+}
+
 .order-section {
     background-color: white;
     width: 508px;

@@ -1,73 +1,48 @@
-import { menuArray } from "./data.js"
 
-const orderBtn = document.getElementById("order-btn")
-const modal = document.getElementById("modal")
-const payBtn = document.getElementById("pay-btn")
-const buyingMgs = document.getElementById("buing-mgs")
+import { menuArray } from "./data.js"
+console.log(menuArray)
+
 const main = document.getElementById("main")
 
-let removeItem = document.getElementsByClassName("remove-item")
+document.addEventListener("click", function(e) {
+    if(e.target.dataset.plus) {
+        handleAddClick(e.target.dataset.plus)
+    }
+})
 
-for (let i = 0; i < removeItem.length; i++) {
-    let remove = removeItem[i]
-    remove.addEventListener("click", removeCartItem)
-}
-
-function removeCartItem(e) {
-    let removeClick = e.target
-    removeClick.parentElement.parentElement.remove()
-}
-
-
-
-
-// document.addEventListener("click", function(e) {
-//     if(e.target.dataset.add) {
-//         handleAddClick(e.target.dataset.add)
-//     }
-// })
+/* function handleAddClick(meee) {
+    const targetMenuObj = menuArray.filter(function(menu){
+        return meee === menu.id
+    })[0]
+    console.log(targetMenuObj)
+} */
 
 
 
-/* function handleAddClick(addId) {
-    const order = document.getElementById("order")
-    menuArray.forEach(function(orders) {
-        order.innerHTML = ` 
-            <div class="order-section" id="order-section">
-                <div class="order-section-header">Your order</div>
-                <div class="order-flex">
+function handleAddClick(plusId) {
+    console.log(plusId)
+    // remove the .hide from order
+    if(document.getElementById("order").classList.contains("hide")) {
+        document.getElementById("order").classList.remove("hide")
+    }
+    const menuObjArray = menuArray.filter(function(item){
+        return item.id === plusId
+    })[0]
 
-                    <div>
-                        <p class="ordered-item">${orders.name} <span class="remove-item">(remove)</span></p>
+    console.log(menuObjArray)
+    let cartRows = document.getElementById("cart-rows").innerHTML += `
+                    <div class="order-flex">
+                        <p class="ordered-item">${menuObjArray.name} <span class="remove-item">(remove)</span></p>
+                        <p> <span class="see-price">$${menuObjArray.price}</span></p>
                     </div>
-                    <div>
-                        <p> <span class="see-price">$${orders.price}</span></p>
-                    </div>
-                </div>
-                <div class="total-price-div">
-                    <p class="total-price-text">Total price:</p>
-                    <p class="total-price">$24</p>
-                </div>
-                <button class="order-btn" id="order-btn">Complete order</button>
-            </div>
     `
-    })
-
-    /* const targerMenuObj = menuArray.filter(function(menu) {
-        return menu.id === addId
-    }) 
-
-    return order
+    return cartRows
 }
- */
-
-
-
-
-
 
 function getRestaurantHtml() {
     let restaurantHtml = ""
+
+    let i = 0
     menuArray.forEach(function (restaurant) {
         restaurantHtml += `
         <section>
@@ -80,15 +55,21 @@ function getRestaurantHtml() {
                 </div>
             </div>
 
-            <div class="add-icon"><i class="fa-solid fa-plus" data-add="${restaurant.id}"></i></div>
+            <button id="remove-item-${restaurant.id}" class="add-icon" data-remove="${restaurant.id}" disabled><i class="fa-sharp fa-solid fa-minus"></i></button>
+            <button id="add-item-${restaurant.id}" class="add-icon" data-add="${restaurant.id}"><i class="fa-regular fa-plus"></i></button>
         </section>
         `
+        i++
     })
-    main.innerHTML = restaurantHtml
+    return restaurantHtml
 }
-
 getRestaurantHtml()
 
+function render() {
+    main.innerHTML = getRestaurantHtml()
+}
+
+render()
 
 
 
@@ -104,3 +85,43 @@ payBtn.addEventListener("click", function() {
     modal.style.display = 'none'
     buyingMgs.style.display = "block"
 }) */
+
+
+
+
+
+
+
+/* const orderBtn = document.getElementById("order-btn")
+const modal = document.getElementById("modal")
+const payBtn = document.getElementById("pay-btn")
+const buyingMgs = document.getElementById("buing-mgs") */
+
+
+
+
+
+
+
+
+
+// let removeItem = document.getElementsByClassName("remove-item")
+
+// for (let i = 0; i < removeItem.length; i++) {
+//     let remove = removeItem[i]
+//     remove.addEventListener("click", removeCartItem)
+// }
+
+// function removeCartItem(e) {
+//     let removeClick = e.target
+//     removeClick.parentElement.parentElement.remove()
+// }
+
+
+// function updateTotalPrice() {
+//     let cardRows = document.getElementsByClassName("cart-rows")
+//     for (let i = 0; i < cardRows.length; i++) {
+//         let cartRow = cardRows[i]
+//         let priceElement = cartRow.getElementsByClassName("")
+//     }
+// }
