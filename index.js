@@ -4,6 +4,9 @@ const main = document.getElementById("main")
 let totalPriceDiv = document.getElementById("total-price-div")
 let cartRows = document.getElementById("cart-rows")
 
+
+
+
 let order = initializeOrder()
 
 // targeting the clicks in documents. 
@@ -12,6 +15,10 @@ document.addEventListener("click", function(e) {
         addToOrder(e.target.dataset.add)
     } else if(e.target.dataset.remove) {
         removeOrder(e.target.dataset.remove)
+    } else if(e.target.id === "order-btn"){
+        handleOrder()
+    } else if(e.target.id === "pay-btn"){
+        paymentForm()
     }
 })
 
@@ -34,10 +41,18 @@ function removeOrder(id) {
     renderSum()
 }
 
+function handleOrder() {
 
+    setTimeout(function() {
+        document.getElementById("modal").classList.remove("hide")
+    }, 200)
+}
 
+function paymentForm() {
 
-//utility functions(new to me) =>  all the data in this order function() line 7
+}
+
+//utility functions(new to me) =>  all the data in this order function() line 10
 function initializeOrder() {
     let newOrder = menuArray.map( item => (
         {

@@ -218,7 +218,6 @@ section {
 /* == Modal styles == */
 
 .modal{
-    display: none;
     position: fixed;
     right: 0;
     left: 0;

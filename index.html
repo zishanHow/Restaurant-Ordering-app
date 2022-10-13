@@ -63,12 +63,12 @@
         </div>
 
         <!-- == modal section == -->
-        <div class="modal" id="modal">
+        <div class="modal hide" id="modal">
             <p class="modal-header">Enter card details</p>
             <form action="#" class="modal-form">
-                <input type="text" id="fullName" name="fullName" placeholder="Enter your name">
-                <input type="number" id="cardNumber" name="cardNumber" placeholder="Enter card number">
-                <input type="password" id="password" name="password" placeholder="Enter CVV">
+                <input type="text" id="fullName" name="fullName" placeholder="Enter your name" required>
+                <input type="number" id="cardNumber" name="cardNumber" placeholder="Enter card number" required>
+                <input type="number" id="password" name="password" placeholder="Enter CVV" required>
 
                 <button type="submit" class="pay-btn" id="pay-btn">Pay</button>
             </form>
