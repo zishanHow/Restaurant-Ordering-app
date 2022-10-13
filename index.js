@@ -5,8 +5,6 @@ let totalPriceDiv = document.getElementById("total-price-div")
 let cartRows = document.getElementById("cart-rows")
 const consentForm = document.getElementById("consent-form")
 
-
-
 let order = initializeOrder()
 
 // targeting the clicks in documents. 
@@ -20,18 +18,22 @@ document.addEventListener("click", function(e) {
     }
 })
 
+//  FORM data in here !! 
 document.addEventListener("submit", function(e){
     e.preventDefault()
-    //paymentForm()
 
     const consentFormData = new FormData(consentForm)
     const fullName = consentFormData.get("fullName")
-    console.log(fullName)
 
     document.getElementById("loading").classList.remove("hide")
     setTimeout(function(){
         document.getElementById("loading").classList.add("hide")
-        document.getElementById("buying-mgs").classList.remove("hide")
+
+        document.getElementById("buying-mgs-div").innerHTML = `
+            <div class="buying-mgs" id="buying-mgs">
+                <p>Thanks, ${fullName}! Your order is way!</p>
+            </div>
+        `
     }, 3000)
     document.getElementById("modal").classList.add("hide")
     document.getElementById("order").classList.add("hide")
@@ -41,7 +43,6 @@ function addToOrder(addId) {
     if(document.getElementById("order").classList.contains("hide")) {
         document.getElementById("order").classList.remove("hide")
     }
-    document.getElementById("buying-mgs").classList.add("hide")
     let targetItem = getItem(addId)
     targetItem.orders++
     renderSum()
@@ -134,7 +135,7 @@ function getRestaurantHtml() {
                 </div>
             </div>
 
-            <button id="add-food-${restaurant.id}" class="add-icon"><i class="fa-solid fa-plus" data-add="${restaurant.id}"></i></button>
+            <div id="add-food-${restaurant.id}" class="add-icon"><i class="fa-solid fa-plus" data-add="${restaurant.id}"></i></div>
         </section>
         `
     i++
