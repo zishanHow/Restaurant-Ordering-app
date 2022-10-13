@@ -58,6 +58,14 @@ function getItem(id) {
 
 
 
+// calculating function()
+function calculateOrderPrice(){
+    let price = 0
+    for(let item of order) {
+        price += item.price*item.orders
+    }
+    return price
+}
 
 
 
