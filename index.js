@@ -6,7 +6,7 @@ let cartRows = document.getElementById("cart-rows")
 
 let order = initializeOrder()
 
-
+// targeting the clicks in documents. 
 document.addEventListener("click", function(e) {
     if(e.target.dataset.add) {
         addToOrder(e.target.dataset.add)
@@ -15,29 +15,29 @@ document.addEventListener("click", function(e) {
     }
 })
 
+
 function addToOrder(addId) {
-    /* let cartRows = document.getElementById("cart-rows") */
+    if(document.getElementById("order").classList.contains("hide")) {
+        document.getElementById("order").classList.remove("hide")
+    }
     let targetItem = getItem(addId)
     targetItem.orders++
-/*     let foodOrder = ``
-    foodOrder = `
-                    <div class="order-flex">
-                        <p class="ordered-item"><span class="how-many-order">1 </span> ${targetItem.name} <span id="remove-food-${targetItem.id}" class="remove-item" data-remove="${targetItem.id}">(remove)</span></p>
-
-                        <p> <span class="see-price">$${targetItem.price}</span></p>
-                    </div>
-    `
-    cartRows.innerHTML += foodOrder */
     renderSum()
 }
 
 function removeOrder(id) {
     let targetItem = getItem(id)
-    console.log(targetItem)
+    targetItem.orders--
+    if(targetItem.orders === 0){
+        document.getElementById("order").classList.add("hide")
+    }
+    renderSum()
 }
 
 
-//utility functions =>  all the data in this order function() line 7
+
+
+//utility functions(new to me) =>  all the data in this order function() line 7
 function initializeOrder() {
     let newOrder = menuArray.map( item => (
         {
@@ -50,7 +50,7 @@ function initializeOrder() {
     return newOrder
 }
 
-// filter the id in a fucntion ()
+// filter the id's in a fucntion(new to me)
 function getItem(id) {
     let newItem = order.filter(function(item) {
         return item.id === parseInt(id)
@@ -60,7 +60,7 @@ function getItem(id) {
 
 
 
-// calculating function()
+// calculating function()(new to me)
 function calculateOrderPrice(){
     let price = 0
     for(let item of order) {
@@ -69,7 +69,7 @@ function calculateOrderPrice(){
     return price
 }
 
-// render order function 
+// render order function(new to me)
 function renderSum() {
     let orderFood = ''
     let orderHTML = ''
