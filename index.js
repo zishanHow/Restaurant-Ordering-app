@@ -6,23 +6,32 @@ const main = document.getElementById("main")
 
 let order = initializeOrder()
 
+
 document.addEventListener("click", function(e) {
     if(e.target.dataset.add) {
         addToOrder(e.target.dataset.add)
+    } else if(e.target.dataset.remove) {
+        removeOrder(e.target.dataset.remove)
     }
 })
 
 function addToOrder(addId) {
     let cartRows = document.getElementById("cart-rows")
     let targetItem = getItem(addId)
-    console.log(targetItem)
-    cartRows.innerHTML += `
+    let foodOrder = ``
+    foodOrder = `
                     <div class="order-flex">
-                        <p class="ordered-item"><span class="how-many-order">1 </span> ${targetItem.name} <span class="remove-item">(remove)</span></p>
+                        <p class="ordered-item"><span class="how-many-order">1 </span> ${targetItem.name} <span id="remove-food-${targetItem.id}" class="remove-item" data-remove="${targetItem.id}">(remove)</span></p>
+
                         <p> <span class="see-price">$${targetItem.price}</span></p>
                     </div>
     `
-    return cartRows
+    return cartRows.innerHTML += foodOrder
+}
+
+function removeOrder(id) {
+    let targetItem = getItem(id)
+    console.log(targetItem)
 }
 
 
@@ -39,7 +48,6 @@ function initializeOrder() {
     return newOrder
 }
 
-
 // filter the id in a fucntion ()
 function getItem(id) {
     let newItem = order.filter(function(item) {
@@ -47,20 +55,6 @@ function getItem(id) {
     })[0]
     return newItem
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -84,7 +78,6 @@ function getRestaurantHtml() {
                 </div>
             </div>
 
-            <button id="remove-food-${restaurant.id}" class="add-icon" disabled><i class="fa-sharp fa-solid fa-minus" data-remove="${restaurant.id}"></i></button>
             <button id="add-food-${restaurant.id}" class="add-icon"><i class="fa-solid fa-plus" data-add="${restaurant.id}"></i></button>
         </section>
         `
