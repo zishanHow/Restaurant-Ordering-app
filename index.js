@@ -3,7 +3,7 @@ import { menuArray } from "./data.js"
 const main = document.getElementById("main")
 let totalPriceDiv = document.getElementById("total-price-div")
 let cartRows = document.getElementById("cart-rows")
-
+const consentForm = document.getElementById("consent-form")
 
 
 
@@ -17,16 +17,31 @@ document.addEventListener("click", function(e) {
         removeOrder(e.target.dataset.remove)
     } else if(e.target.id === "order-btn"){
         handleOrder()
-    } else if(e.target.id === "pay-btn"){
-        paymentForm()
     }
 })
 
+document.addEventListener("submit", function(e){
+    e.preventDefault()
+    //paymentForm()
+
+    const consentFormData = new FormData(consentForm)
+    const fullName = consentFormData.get("fullName")
+    console.log(fullName)
+
+    document.getElementById("loading").classList.remove("hide")
+    setTimeout(function(){
+        document.getElementById("loading").classList.add("hide")
+        document.getElementById("buying-mgs").classList.remove("hide")
+    }, 3000)
+    document.getElementById("modal").classList.add("hide")
+    document.getElementById("order").classList.add("hide")
+})
 
 function addToOrder(addId) {
     if(document.getElementById("order").classList.contains("hide")) {
         document.getElementById("order").classList.remove("hide")
     }
+    document.getElementById("buying-mgs").classList.add("hide")
     let targetItem = getItem(addId)
     targetItem.orders++
     renderSum()
@@ -48,11 +63,6 @@ function handleOrder() {
     }, 200)
 }
 
-function paymentForm() {
-
-}
-
-//utility functions(new to me) =>  all the data in this order function() line 10
 function initializeOrder() {
     let newOrder = menuArray.map( item => (
         {
@@ -72,8 +82,6 @@ function getItem(id) {
     })[0]
     return newItem
 }
-
-
 
 // calculating function()(new to me)
 function calculateOrderPrice(){

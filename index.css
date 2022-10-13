@@ -200,8 +200,7 @@ section {
 }
 
 /* buing mgs */
-.buing-mgs {
-    display: none;
+.buying-mgs {
     text-align: center;
     width: 508px;
     margin: 0 auto;
@@ -214,6 +213,29 @@ section {
     line-height: 17px;
 }
 
+/* == loading == */
+.loading{
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 90px;
+    bottom: 0;
+    width: 160px;
+    height: 110px;
+    margin: 0 auto;
+    background-color: black;
+    border-radius: 10px;
+}
+.loading-img {
+    margin-top: 25px;
+}
+.loading-text{
+    margin-top: 10px;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    font-family: cursive;
+}
 
 /* == Modal styles == */
 

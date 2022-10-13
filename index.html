@@ -38,8 +38,8 @@
 
         </main>
 
-        <div class="buing-mgs" id="buing-mgs">
-            <p>Thanks, James! Your order is way!</p>
+        <div class="buying-mgs hide" id="buying-mgs">
+            <p>Thanks, Your order is way!</p>
         </div>
 
         <!-- == order section == -->
@@ -62,10 +62,17 @@
             </div>
         </div>
 
+
+        <!-- == Loading svg div == -->
+        <div class="loading hide" id="loading">
+            <img class="loading-img" src="image/loading.svg" alt="loading">
+            <p class="loading-text">Please wait...</p>
+        </div>
+
         <!-- == modal section == -->
         <div class="modal hide" id="modal">
             <p class="modal-header">Enter card details</p>
-            <form action="#" class="modal-form">
+            <form action="#" class="modal-form" id="consent-form">
                 <input type="text" id="fullName" name="fullName" placeholder="Enter your name" required>
                 <input type="number" id="cardNumber" name="cardNumber" placeholder="Enter card number" required>
                 <input type="number" id="password" name="password" placeholder="Enter CVV" required>
