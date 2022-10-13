@@ -13,9 +13,16 @@ document.addEventListener("click", function(e) {
 })
 
 function addToOrder(addId) {
+    let cartRows = document.getElementById("cart-rows")
     let targetItem = getItem(addId)
     console.log(targetItem)
-    
+    cartRows.innerHTML += `
+                    <div class="order-flex">
+                        <p class="ordered-item"><span class="how-many-order">1 </span> ${targetItem.name} <span class="remove-item">(remove)</span></p>
+                        <p> <span class="see-price">$${targetItem.price}</span></p>
+                    </div>
+    `
+    return cartRows
 }
 
 
