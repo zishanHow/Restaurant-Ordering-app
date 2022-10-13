@@ -1,8 +1,8 @@
 import { menuArray } from "./data.js"
 
 const main = document.getElementById("main")
-
-
+let totalPriceDiv = document.getElementById("total-price-div")
+let cartRows = document.getElementById("cart-rows")
 
 let order = initializeOrder()
 
@@ -16,9 +16,10 @@ document.addEventListener("click", function(e) {
 })
 
 function addToOrder(addId) {
-    let cartRows = document.getElementById("cart-rows")
+    /* let cartRows = document.getElementById("cart-rows") */
     let targetItem = getItem(addId)
-    let foodOrder = ``
+    targetItem.orders++
+/*     let foodOrder = ``
     foodOrder = `
                     <div class="order-flex">
                         <p class="ordered-item"><span class="how-many-order">1 </span> ${targetItem.name} <span id="remove-food-${targetItem.id}" class="remove-item" data-remove="${targetItem.id}">(remove)</span></p>
@@ -26,7 +27,8 @@ function addToOrder(addId) {
                         <p> <span class="see-price">$${targetItem.price}</span></p>
                     </div>
     `
-    return cartRows.innerHTML += foodOrder
+    cartRows.innerHTML += foodOrder */
+    renderSum()
 }
 
 function removeOrder(id) {
@@ -67,7 +69,30 @@ function calculateOrderPrice(){
     return price
 }
 
+// render order function 
+function renderSum() {
+    let orderFood = ''
+    let orderHTML = ''
+    let total = calculateOrderPrice()
+    for (let item of order){
+        if(item.orders > 0){
+            orderFood +=  `
+            <div class="order-flex">
+                <p class="ordered-item"><span class="how-many-order">${item.orders} </span> ${item.name} <span id="remove-food-${item.id}" class="remove-item" data-remove="${item.id}">(remove)</span></p>
 
+                <p> <span class="see-price">$${item.price}</span></p>
+            </div>
+`
+        }
+    }
+    orderHTML += `
+                <p class="total-price-text">Total price:</p>
+                <p class="total-price">$${total}</p> 
+                `
+
+    cartRows.innerHTML = orderFood
+    totalPriceDiv.innerHTML = orderHTML
+}
 
 // main section
 function getRestaurantHtml() {
@@ -93,7 +118,6 @@ function getRestaurantHtml() {
     })
     return restaurantHtml
 }
-
 
 function render() {
     main.innerHTML = getRestaurantHtml()
