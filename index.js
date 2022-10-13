@@ -14,13 +14,12 @@ document.addEventListener("click", function(e) {
 
 function addToOrder(addId) {
     let targetItem = getItem(addId)
-    if(targetItem.orders === 0) {
-        document.getElementById(`remove-food-${id}`).disabled = false
-    }targetItem.orders++
+    console.log(targetItem)
+    
 }
 
 
-//utility functions
+//utility functions =>  all the data in this order function() line 7
 function initializeOrder() {
     let newOrder = menuArray.map( item => (
         {
@@ -30,8 +29,27 @@ function initializeOrder() {
             orders: 0
         }
     ))
-    console.log(newOrder)
+    return newOrder
 }
+
+
+// filter the id in a fucntion ()
+function getItem(id) {
+    let newItem = order.filter(function(item) {
+        return item.id === parseInt(id)
+    })[0]
+    return newItem
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
