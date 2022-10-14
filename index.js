@@ -122,7 +122,6 @@ function renderSum() {
 function getRestaurantHtml() {
     let restaurantHtml = ""
 
-    let i = 0
     menuArray.forEach(function (restaurant) {
         restaurantHtml += `
         <section>
@@ -138,7 +137,6 @@ function getRestaurantHtml() {
             <div id="add-food-${restaurant.id}" class="add-icon"><i class="fa-solid fa-plus" data-add="${restaurant.id}"></i></div>
         </section>
         `
-    i++
     })
     return restaurantHtml
 }
