@@ -51,10 +51,19 @@ function addToOrder(addId) {
 function removeOrder(id) {
     let targetItem = getItem(id)
     targetItem.orders--
-    if(targetItem.orders === 0){
+    /* if(targetItem.orders === 0){
         document.getElementById("order").classList.add("hide")
-    }
-    renderSum()
+    } */
+
+    if(order.length == 0) {
+        document.getElementById("order").classList.add("hide")
+        console.log("true")
+      } else {
+        document.getElementById("order").classList.remove("hide")
+        console.log("false")
+      }
+
+      renderSum()
 }
 
 function handleOrder() {
